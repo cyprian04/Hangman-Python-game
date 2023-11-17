@@ -34,33 +34,33 @@ def game():
 
     while True:
 
-        if proba != 0:
+        if attempt != 0:
             draw_hangman(attempt)
 
-        if proba == max_attempts:
-            print("Przekroczyłeś maksymalną liczbę prób. Koniec gry.")
-            print("Poprawne słowo to: " + guessing_word)
+        if attempt == max_attempts:
+            print("You have exceeded the maximum number of attempts. End of the game.")
+            print("The correct word is: " + guessing_word)
             break
 
-        stan = "".join([litera if litera in guessed else "_" for litera in guessing_word])
+        stan = "".join([letter if letter in guessed else "_" for letter in guessing_word])
         print(stan)
 
         if set(stan) == guessing_word:
-            print("Gratulacje! Zgadłeś słowo: " + guessing_word)
+            print("Congratulations! You guessed the word: " + guessing_word)
             break
 
-        litera = input("Podaj literę: ").lower()
+        letter = input("Enter a letter: ").lower()
 
-        if litera in guessed:
-            print("Już podałeś literę " + litera + ". Spróbuj ponownie.")
-            proba += 1
-            print("Pozostało prób: " + str(max_attempts - proba))
-        elif litera in guessing_word_set:
-            print("Dobra robota! Podana litera jest w słowie.")
-            guessed.add(litera)
+        if letter in guessed:
+            print("You've already entered the letter " + letter + ". try again.")
+            attempt += 1
+            print("remaining attempts: " + str(max_attempts - attempt))
+        elif letter in guessing_word_set:
+            print("Good job! The given letter is in the word.")
+            guessed.add(letter)
         else:
-            print("Niestety, podana litera nie występuje w słowie.")
-            proba += 1
-            print("Pozostało prób: " + str(max_attempts - proba))
+            print("Unfortunately, the given letter does not appear in the word.")
+            attempt += 1
+            print("remaining attempts: " + str(max_attempts - attempt))
 
 game()
