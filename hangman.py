@@ -10,7 +10,7 @@ def choose_random_word():
 
     return random.choice(all_words)
 
-def draw_hangman(proba):
+def draw_hangman(attempt):
     hangman_stages = [
         " -----\n |   |\n |\n |\n |\n |\n_|___",
         " -----\n |   |\n |   O\n |\n |\n |\n_|___",
@@ -20,13 +20,12 @@ def draw_hangman(proba):
         " -----\n |   |\n |   O\n |  /|\\\n |  / \n |\n_|___",
         " -----\n |   |\n |   O\n |  /|\\\n |  / \\\n |\n_|___"
  ]
-
-    print(hangman_stages[proba])
+    print(hangman_stages[attempt])
 
 def game():
     print("Welcome to hangman game!")
 
-    guessing_word = choose_random_word().lower();
+    guessing_word = choose_random_word().lower()
     guessing_word_set = set(guessing_word)
     guessed = set()
     attempt = 0
